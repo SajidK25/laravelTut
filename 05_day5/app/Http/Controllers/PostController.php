@@ -109,8 +109,12 @@ class PostController extends Controller
     {
       // $deleted=DB::delete('delete from posts where id=?',[$id]);
       // return $deleted;
-      DB::table('posts')->where('id',$id)->delete();
+      $deleted=DB::table('posts')->where('id',$id)->delete();
+      if($deleted){
       return redirect('/post');
+    }else{
+      echo "not deleted";
+    }
 
     }
 }
